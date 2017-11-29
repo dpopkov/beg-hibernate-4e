@@ -31,26 +31,6 @@ public class RankingTest {
     }
 
     @Test
-    public void test02SaveRanking() {
-        try (Session session = factory.openSession()) {
-            Transaction tx = session.beginTransaction();
-
-            Person subject = savePerson(session, "J. C. Smell");
-            Person observer = savePerson(session, "Drew Lombardo");
-            Skill skill = saveSkill(session, "Java");
-
-            Ranking ranking = new Ranking();
-            ranking.setSubject(subject);
-            ranking.setObserver(observer);
-            ranking.setSkill(skill);
-            ranking.setRanking(8);
-            session.save(ranking);
-
-            tx.commit();
-        }
-    }
-
-    @Test
     public void test01Rankings() {
         populateRankingsData();
         try (Session session = factory.openSession()) {
@@ -74,6 +54,62 @@ public class RankingTest {
         }
     }
 
+    @Test
+    public void test02ChangeRanking() {
+        try (Session session = factory.openSession()) {
+            Transaction tx = session.beginTransaction();
+
+            Query<Ranking> query = session.createQuery("from Ranking r " +
+                    "where r.subject.name=:subject and " +
+                    "r.observer.name=:observer and " +
+                    "r.skill.name=:skill", Ranking.class);
+            query.setParameter("subject", "J. C. Smell");
+            query.setParameter("observer", "Gene Showrama");
+            query.setParameter("skill", "Java");
+            Ranking ranking = query.uniqueResult();
+            assertNotNull("Could not find matching ranking", ranking);
+            ranking.setRanking(9);
+
+            tx.commit();
+        }
+        assertEquals(8, getAverage("J. C. Smell", "Java"));
+    }
+
+    @Test
+    public void test03SaveRanking() {
+        try (Session session = factory.openSession()) {
+            Transaction tx = session.beginTransaction();
+
+            Person subject = savePerson(session, "J. C. Smell");
+            Person observer = savePerson(session, "Drew Lombardo");
+            Skill skill = saveSkill(session, "Java");
+
+            Ranking ranking = new Ranking();
+            ranking.setSubject(subject);
+            ranking.setObserver(observer);
+            ranking.setSkill(skill);
+            ranking.setRanking(8);
+            session.save(ranking);
+
+            tx.commit();
+        }
+    }
+
+    private int getAverage(String subject, String skill) {
+        try (Session session = factory.openSession()) {
+            Query<Ranking> query = session.createQuery("from Ranking r " +
+                    "where r.subject.name=:name and " +
+                    "r.skill.name=:skill", Ranking.class);
+            query.setParameter("name", subject);
+            query.setParameter("skill", skill);
+            IntSummaryStatistics stats = query.list()
+                    .stream()
+                    .collect(Collectors.summarizingInt(Ranking::getRanking));
+            int average = (int) stats.getAverage();
+            return average;
+        }
+    }
+
     /*@AfterClass
     public static void clear() {
         factory.close();
@@ -83,7 +119,7 @@ public class RankingTest {
     private void populateRankingsData() {
         try (Session session = factory.openSession()) {
             Transaction tx = session.beginTransaction();
-            createData(session, "J. C. Smell", "Gene Showrame", "Java", 6);
+            createData(session, "J. C. Smell", "Gene Showrama", "Java", 6);
             createData(session, "J. C. Smell", "Scottball Most", "Java", 7);
             createData(session, "J. C. Smell", "Drew Lombardo", "Java", 8);
             tx.commit();
