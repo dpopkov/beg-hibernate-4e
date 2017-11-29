@@ -1,9 +1,19 @@
 package learn.beghibernate.ch03.simple;
 
+import javax.persistence.*;
+
+@Entity
 public class Ranking {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @ManyToOne
     private Person subject;
+    @ManyToOne
     private Person observer;
+    @ManyToOne
     private Skill skill;
+    @Column
     private Integer ranking;
 
     public Ranking() {
@@ -41,10 +51,19 @@ public class Ranking {
         this.ranking = ranking;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Ranking{" +
-                "subject=" + subject +
+                "id=" + id +
+                ", subject=" + subject +
                 ", observer=" + observer +
                 ", skill=" + skill +
                 ", ranking=" + ranking +

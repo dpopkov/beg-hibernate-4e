@@ -17,5 +17,7 @@
         <!--  Drop and re-create the database schema on startup  -->
         <property name="hbm2ddl.auto">create-drop</property>
         <mapping class="learn.beghibernate.ch03.simple.Person"/>
+        <mapping class="learn.beghibernate.ch03.simple.Skill"/>
+        <mapping class="learn.beghibernate.ch03.simple.Ranking"/>
     </session-factory>
 </hibernate-configuration>
