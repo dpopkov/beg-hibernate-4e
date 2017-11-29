@@ -5,11 +5,16 @@
 <hibernate-configuration>
     <session-factory>
         <!-- Database connection settings -->
-        <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:./db03</property>
-        <property name="connection.username">sa</property>
-        <property name="connection.password"/>
-        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+        <!--<property name="connection.driver_class">org.h2.Driver</property>-->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <!--<property name="connection.url">jdbc:h2:./db03</property>-->
+        <property name="connection.url">jdbc:postgresql://localhost:5432/beghiber</property>
+        <!--<property name="connection.username">sa</property>-->
+        <property name="connection.username">root</property>
+        <!--<property name="connection.password"/>-->
+        <property name="connection.password">root</property>
+        <!--<property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <!--  Echo all executed SQL to stdout  -->
         <property name="show_sql">true</property>
         <!-- Use c3p0 as external connection pool  -->

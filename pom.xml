@@ -19,6 +19,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <h2.version>1.4.196</h2.version>
+        <postgresql.version>9.4.1212.jre7</postgresql.version>
         <hibernate-core.version>5.2.12.Final</hibernate-core.version>
     </properties>
 
@@ -35,6 +36,13 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
 
         <!-- Hibernate -->
