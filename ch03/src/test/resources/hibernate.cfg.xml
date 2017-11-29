@@ -16,6 +16,6 @@
         <property name="c3p0.timeout">10</property>
         <!--  Drop and re-create the database schema on startup  -->
         <property name="hbm2ddl.auto">create-drop</property>
-        <mapping class="learn.beghibernate.ch02.hibernate.Message"/>
+        <mapping class="learn.beghibernate.ch03.simple.Person"/>
     </session-factory>
 </hibernate-configuration>
