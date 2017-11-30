@@ -76,7 +76,21 @@ public class RankingTest {
     }
 
     @Test
-    public void test03SaveRanking() {
+    public void test03RemoveRanking() {
+        try (Session session = factory.openSession()) {
+            Transaction tx = session.beginTransaction();
+
+            Ranking ranking = findRanking(session, "J. C. Smell", "Gene Showrama", "Java");
+            assertNotNull("Ranking not found", ranking);
+            session.delete(ranking);
+
+            tx.commit();
+        }
+        assertEquals(7, getAverage("J. C. Smell", "Java"));
+    }
+
+    @Test
+    public void test04SaveRanking() {
         try (Session session = factory.openSession()) {
             Transaction tx = session.beginTransaction();
 
@@ -93,6 +107,18 @@ public class RankingTest {
 
             tx.commit();
         }
+    }
+
+    private Ranking findRanking(Session session, String subjectName, String observerName, String skill) {
+        Query<Ranking> query = session.createQuery("from Ranking r where " +
+                "r.subject.name=:subject and " +
+                "r.observer.name=:observer and " +
+                "r.skill.name=:skill", Ranking.class);
+        query.setParameter("subject", subjectName);
+        query.setParameter("observer", observerName);
+        query.setParameter("skill", skill);
+        Ranking ranking = query.uniqueResult();
+        return ranking;
     }
 
     private int getAverage(String subject, String skill) {
