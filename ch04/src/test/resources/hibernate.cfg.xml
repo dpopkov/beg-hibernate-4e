@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- H2 connection settings -->
+        <!-- -->
+        <property name="connection.driver_class">org.h2.Driver</property>
+        <property name="connection.url">jdbc:h2:./db04</property>
+        <property name="connection.username">sa</property>
+        <property name="connection.password"></property>
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+        <!-- -->
+        <!-- PostgreSQL connection settings -->
+        <!--
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/beghiber</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        -->
+        <!--  Echo all executed SQL to stdout  -->
+        <property name="show_sql">true</property>
+        <!-- Use c3p0 as external connection pool  -->
+        <property name="c3p0.timeout">10</property>
+        <!--  Drop and re-create the database schema on startup  -->
+        <property name="hbm2ddl.auto">create-drop</property>
+        <mapping class="learn.beghibernate.ch04.broken.Message"/>
+        <mapping class="learn.beghibernate.ch04.broken.Email"/>
+        <mapping class="learn.beghibernate.ch04.mapped.Message"/>
+        <mapping class="learn.beghibernate.ch04.mapped.Email"/>
+    </session-factory>
+</hibernate-configuration>
