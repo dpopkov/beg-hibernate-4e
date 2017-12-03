@@ -37,6 +37,34 @@ public class HibernateRankingService implements RankingService {
         }
     }
 
+    @Override
+    public void updateRanking(String subject, String observer, String skill, int rankingValue) {
+        try (Session session = SessionUtil.getSession()) {
+            Transaction tx = session.beginTransaction();
+
+            Ranking ranking = findRanking(session, subject, observer, skill);
+            if (ranking == null) {
+                addRanking(session, subject, observer, skill, rankingValue);
+            } else {
+                ranking.setRanking(rankingValue);
+            }
+
+            tx.commit();
+        }
+    }
+
+    private Ranking findRanking(Session session, String subject, String observer, String skill) {
+        Query<Ranking> query = session.createQuery("from Ranking r where " +
+                "r.subject.name=:subjectName and " +
+                "r.observer.name=:observerName and " +
+                "r.skill.name=:skillName", Ranking.class);
+        query.setParameter("subjectName", subject);
+        query.setParameter("observerName", observer);
+        query.setParameter("skillName", skill);
+        Ranking ranking = query.uniqueResult();
+        return ranking;
+    }
+
     private int getRankingFor(Session session, String subject, String skill) {
         Query<Ranking> query = session.createQuery("from Ranking r " +
                 "where r.subject.name=:subjectName " +

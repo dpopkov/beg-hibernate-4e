@@ -1,13 +1,10 @@
 package learn.beghibernate.ch03.application;
 
-import learn.beghibernate.ch03.application.impl.HibernateRankingService;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class AddRankingTest {
-    RankingService service = new HibernateRankingService();
-
+public class AddRankingTest extends BasicRankingTest {
     @Test
     public void addRanking() {
         service.addRanking("J. C. Smell", "Drew Lombardo", "Mule", 8);
