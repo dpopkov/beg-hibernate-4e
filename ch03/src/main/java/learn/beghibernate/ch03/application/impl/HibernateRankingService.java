@@ -53,6 +53,20 @@ public class HibernateRankingService implements RankingService {
         }
     }
 
+    @Override
+    public void removeRanking(String subject, String observer, String skill) {
+        try (Session session = SessionUtil.getSession()) {
+            Transaction tx = session.beginTransaction();
+
+            Ranking ranking = findRanking(session, subject, observer, skill);
+            if (ranking != null) {
+                session.delete(ranking);
+            }
+
+            tx.commit();
+        }
+    }
+
     private Ranking findRanking(Session session, String subject, String observer, String skill) {
         Query<Ranking> query = session.createQuery("from Ranking r where " +
                 "r.subject.name=:subjectName and " +
