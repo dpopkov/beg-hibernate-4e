@@ -9,7 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.util.IntSummaryStatistics;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class HibernateRankingService implements RankingService {
@@ -65,6 +65,32 @@ public class HibernateRankingService implements RankingService {
 
             tx.commit();
         }
+    }
+
+    @Override
+    public Map<String, Integer> findRankingsFor(String subject) {
+        try (Session session = SessionUtil.getSession()) {
+            Transaction tx = session.beginTransaction();
+            Map<String, Integer> results = findRankingsFor(session, subject);
+            tx.commit();
+            return results;
+        }
+    }
+
+    private Map<String, Integer> findRankingsFor(Session session, String subject) {
+        Query<Ranking> query = session.createQuery("from Ranking r where " +
+                "r.subject.name=:subjectName", Ranking.class);
+        query.setParameter("subjectName", subject);
+        Map<String, Integer> results = new HashMap<>();
+        List<Ranking> rankings = query.list();
+        Set<String> skills = new HashSet<>();
+        for (Ranking r : rankings) {
+            skills.add(r.getSkill().getName());
+        }
+        for (String skill : skills) {
+            results.put(skill, this.getRankingFor(subject, skill));
+        }
+        return results;
     }
 
     private Ranking findRanking(Session session, String subject, String observer, String skill) {
