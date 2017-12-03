@@ -1,5 +1,7 @@
 package learn.beghibernate.ch03.application;
 
+import learn.beghibernate.ch03.simple.Person;
+
 import java.util.Map;
 
 public interface RankingService {
@@ -12,4 +14,6 @@ public interface RankingService {
     void removeRanking(String subject, String observer, String skill);
 
     Map<String,Integer> findRankingsFor(String subject);
+
+    Person findBestPersonFor(String skill);
 }

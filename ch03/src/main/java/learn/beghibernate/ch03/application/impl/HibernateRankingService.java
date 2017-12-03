@@ -77,6 +77,32 @@ public class HibernateRankingService implements RankingService {
         }
     }
 
+    @Override
+    public Person findBestPersonFor(String skill) {
+        Person person = null;
+        try (Session session = SessionUtil.getSession()) {
+            Transaction tx = session.beginTransaction();
+            person = findBestPersonFor(session, skill);
+            tx.commit();;
+        }
+        return person;
+    }
+
+    private Person findBestPersonFor(Session session, String skill) {
+        Query<Object[]> query = session.createQuery("select r.subject.name, avg(r.ranking) " +
+                "from Ranking r where " +
+                "r.skill.name=:skillName " +
+                "group by r.subject.name " +
+                "order by avg(r.ranking) desc", Object[].class);
+        query.setParameter("skillName", skill);
+        List<Object[]> result = query.list();
+        if (result.size() > 0) {
+            String subjectName = (String) result.get(0)[0];
+            return findPerson(session, subjectName);
+        }
+        return null;
+    }
+
     private Map<String, Integer> findRankingsFor(Session session, String subject) {
         Query<Ranking> query = session.createQuery("from Ranking r where " +
                 "r.subject.name=:subjectName", Ranking.class);
