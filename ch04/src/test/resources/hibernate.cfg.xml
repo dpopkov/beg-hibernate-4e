@@ -30,5 +30,6 @@
         <mapping class="learn.beghibernate.ch04.broken.Email"/>
         <mapping class="learn.beghibernate.ch04.mapped.Message"/>
         <mapping class="learn.beghibernate.ch04.mapped.Email"/>
+        <mapping class="learn.beghibernate.ch04.general.SimpleObject"/>
     </session-factory>
 </hibernate-configuration>

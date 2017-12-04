@@ -53,6 +53,4 @@ public class WorkingInversionTest {
             System.out.println(message);
         }
     }
-
-
 }
