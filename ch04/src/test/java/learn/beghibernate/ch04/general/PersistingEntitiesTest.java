@@ -10,18 +10,38 @@ import static org.junit.Assert.*;
 public class PersistingEntitiesTest {
     @Test
     public void testSaveLoad() {
+        Long id;
+        SimpleObject obj;
+
         try (Session session = SessionUtil.getSession()) {
             Transaction tx = session.beginTransaction();
 
-            SimpleObject obj = new SimpleObject();
+            obj = new SimpleObject();
             obj.setKey("s1");
             obj.setValue(10L);
             assertNull(obj.getId());
 
             session.save(obj);
             assertNotNull(obj.getId());
+            id = obj.getId();
 
             tx.commit();
+        }
+
+        try (Session session = SessionUtil.getSession()) {
+            // loading the object by id
+            SimpleObject o2 = session.load(SimpleObject.class, id);
+            assertEquals("s1", o2.getKey());
+            assertNotNull(o2.getValue());
+            assertEquals(10L, o2.getValue().longValue());
+
+            SimpleObject o3 = session.load(SimpleObject.class, id);
+            // since o2 and o3 were loaded in the same session, they are the same instance
+            assertEquals(o2, o3);
+            assertEquals(obj, o2);
+
+            assertTrue(o2 == o3);
+            assertFalse(o2 == obj);
         }
     }
 
