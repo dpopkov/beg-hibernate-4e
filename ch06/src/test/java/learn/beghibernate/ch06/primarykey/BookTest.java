@@ -1,4 +1,4 @@
-package learn.beghibernate.primarykey;
+package learn.beghibernate.ch06.primarykey;
 
 import learn.beghibernate.ch06.primarykey.before.Book;
 import learn.beghibernate.util.SessionUtil;

@@ -28,5 +28,6 @@
         <property name="hbm2ddl.auto">create-drop</property>
         <mapping class="learn.beghibernate.ch06.primarykey.before.Book"/>
         <mapping class="learn.beghibernate.ch06.compoundpk.CPKBook"/>
+        <mapping class="learn.beghibernate.ch06.twotables.Customer"/>
     </session-factory>
 </hibernate-configuration>
