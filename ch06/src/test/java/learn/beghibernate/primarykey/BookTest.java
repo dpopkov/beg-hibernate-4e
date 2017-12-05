@@ -28,7 +28,7 @@ public class BookTest {
         }
 
         try (Session session = SessionUtil.getSession()) {
-            Query<Book> query = session.createQuery("from Book", Book.class);
+            Query<Book> query = session.createQuery("from SimpleBook", Book.class);
             Book book = query.uniqueResult();
             System.out.println(book);
         }
