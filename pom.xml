@@ -13,6 +13,7 @@
 		<module>ch03</module>
 		<module>util</module>
         <module>ch04</module>
+        <module>ch06</module>
     </modules>
 
 	<name>beghibernate-parent</name>
