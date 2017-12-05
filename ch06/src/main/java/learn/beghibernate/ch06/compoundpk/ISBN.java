@@ -1,4 +1,4 @@
-package learn.beghibernate.compoundpk;
+package learn.beghibernate.ch06.compoundpk;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

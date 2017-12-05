@@ -1,4 +1,4 @@
-package learn.beghibernate.primarykey.before;
+package learn.beghibernate.ch06.primarykey.before;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

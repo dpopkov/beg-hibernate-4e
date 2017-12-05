@@ -1,6 +1,6 @@
 package learn.beghibernate.primarykey;
 
-import learn.beghibernate.primarykey.before.Book;
+import learn.beghibernate.ch06.primarykey.before.Book;
 import learn.beghibernate.util.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

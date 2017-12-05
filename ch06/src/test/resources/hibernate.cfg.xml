@@ -26,7 +26,7 @@
         <property name="c3p0.timeout">10</property>
         <!--  Drop and re-create the database schema on startup  -->
         <property name="hbm2ddl.auto">create-drop</property>
-        <mapping class="learn.beghibernate.primarykey.before.Book"/>
-        <mapping class="learn.beghibernate.compoundpk.CPKBook"/>
+        <mapping class="learn.beghibernate.ch06.primarykey.before.Book"/>
+        <mapping class="learn.beghibernate.ch06.compoundpk.CPKBook"/>
     </session-factory>
 </hibernate-configuration>
