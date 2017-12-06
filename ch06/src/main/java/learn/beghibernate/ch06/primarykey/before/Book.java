@@ -1,5 +1,6 @@
 package learn.beghibernate.ch06.primarykey.before;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ public class Book {
     @GeneratedValue
     private Integer id;
     private int pages;
+    @Column(name = "working_title", length = 100, nullable = false)
     private String title;
 
     public Book() {

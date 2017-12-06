@@ -24,13 +24,19 @@ public class BookTest {
             session.save(book);
             assertNotNull(book.getId());
 
+            Book book2 = new Book();
+            book2.setPages(3);
+            book2.setTitle("Now title cannot be null");
+            session.save(book2);
+
             tx.commit();
         }
 
         try (Session session = SessionUtil.getSession()) {
             Query<Book> query = session.createQuery("from SimpleBook", Book.class);
-            Book book = query.uniqueResult();
-            System.out.println(book);
+            for(Book book : query.list()) {
+                System.out.println(book);
+            }
         }
     }
 }
