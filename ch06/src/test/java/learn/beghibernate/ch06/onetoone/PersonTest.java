@@ -17,11 +17,11 @@ public class PersonTest {
             person.setName("Jack Sparrow");
             Address address = new Address();
             address.setCity("Gavana");
-            address.setInCityLocation("The Best Tavern");
+            address.setInCityLocation("The Best Tavern really persisted");
             person.setAddress(address);
+            address.setPerson(person);
 
-            session.save(address);
-            session.save(person);
+            session.persist(person);
 
             tx.commit();
 

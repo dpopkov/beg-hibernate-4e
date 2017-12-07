@@ -10,7 +10,7 @@ public class Person {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Address address;
 
     public Long getId() {
