@@ -29,5 +29,7 @@
         <mapping class="learn.beghibernate.ch06.primarykey.before.Book"/>
         <mapping class="learn.beghibernate.ch06.compoundpk.CPKBook"/>
         <mapping class="learn.beghibernate.ch06.twotables.Customer"/>
+        <mapping class="learn.beghibernate.ch06.onetoone.Address"/>
+        <mapping class="learn.beghibernate.ch06.onetoone.Person"/>
     </session-factory>
 </hibernate-configuration>
