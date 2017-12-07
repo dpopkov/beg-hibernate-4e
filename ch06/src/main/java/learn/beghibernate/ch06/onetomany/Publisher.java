@@ -14,6 +14,7 @@ public class Publisher {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable
     private Set<PrintedBook> books = new HashSet<>();
 
     public void addBookByTitle(String title) {
