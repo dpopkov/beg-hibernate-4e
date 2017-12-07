@@ -20,7 +20,6 @@ public class Publisher {
     public void addBookByTitle(String title) {
         PrintedBook book = new PrintedBook();
         book.setTitle(title);
-        book.setPublisher(this);
         books.add(book);
     }
 

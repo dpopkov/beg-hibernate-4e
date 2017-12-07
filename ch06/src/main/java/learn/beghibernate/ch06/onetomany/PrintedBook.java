@@ -11,9 +11,6 @@ public class PrintedBook {
     @Column(nullable = false)
     private String title;
 
-    @ManyToOne
-    private Publisher publisher;
-
     public Integer getId() {
         return id;
     }
@@ -30,20 +27,12 @@ public class PrintedBook {
         this.title = title;
     }
 
-    public Publisher getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
 
     @Override
     public String toString() {
         return "PrintedBook{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", publisher=" + (publisher != null ? publisher.getName() : "null") +
                 '}';
     }
 }
