@@ -33,5 +33,7 @@
         <mapping class="learn.beghibernate.ch06.onetoone.Person"/>
         <mapping class="learn.beghibernate.ch06.onetomany.Publisher"/>
         <mapping class="learn.beghibernate.ch06.onetomany.PrintedBook"/>
+        <mapping class="learn.beghibernate.ch06.manytomany.RealBook"/>
+        <mapping class="learn.beghibernate.ch06.manytomany.Author"/>
     </session-factory>
 </hibernate-configuration>
