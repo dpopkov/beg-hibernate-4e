@@ -37,5 +37,6 @@
         <mapping class="learn.beghibernate.ch06.manytomany.Author"/>
         <mapping class="learn.beghibernate.ch06.jpa2annot.TimeInterval"/>
         <mapping class="learn.beghibernate.ch06.jpa2annot.WordCollection"/>
+        <mapping class="learn.beghibernate.ch06.jpa2annot.VeryLongString"/>
     </session-factory>
 </hibernate-configuration>
