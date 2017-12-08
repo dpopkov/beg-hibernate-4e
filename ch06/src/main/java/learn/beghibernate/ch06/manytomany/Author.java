@@ -1,6 +1,8 @@
 package learn.beghibernate.ch06.manytomany;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Author {
@@ -9,6 +11,9 @@ public class Author {
     private Long id;
 
     private String name;
+
+    @ManyToMany(mappedBy = "authors")
+    private Set<RealBook> books = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -26,11 +31,20 @@ public class Author {
         this.name = name;
     }
 
+    public Set<RealBook> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<RealBook> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", books='" + (books != null ? books.size() : "0") + '\'' +
                 '}';
     }
 }

@@ -18,13 +18,13 @@ public class RealBookTest {
             session.save(bmartin);
 
             RealBook book1 = new RealBook();
-            book1.setTitle("Clean code");
-            book1.getAuthors().add(bmartin);
+            book1.setTitle("Clean code 2");
+            book1.addAuthor(bmartin);
             session.save(book1);
 
             RealBook book2 = new RealBook();
-            book2.setTitle("Clean coder");
-            book2.getAuthors().add(bmartin);
+            book2.setTitle("Clean coder 2");
+            book2.addAuthor(bmartin);
             session.save(book2);
 
             assertNotNull(bmartin.getId());

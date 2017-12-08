@@ -16,6 +16,11 @@ public class RealBook {
     @ManyToMany
     private Set<Author> authors = new HashSet<>();
 
+    public void addAuthor(Author author) {
+        authors.add(author);
+        author.getBooks().add(this);
+    }
+
     public Integer getId() {
         return id;
     }
