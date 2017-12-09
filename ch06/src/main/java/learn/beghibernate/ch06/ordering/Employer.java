@@ -11,6 +11,7 @@ public class Employer {
     private Long id;
     private String name;
     @OneToMany(cascade = CascadeType.ALL)
+    @OrderColumn (name = "employee_number")
     private List<Employee> employees = new ArrayList<>();
 
     public void addEmployeeByName(String name) {
