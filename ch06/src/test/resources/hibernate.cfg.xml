@@ -39,5 +39,7 @@
         <mapping class="learn.beghibernate.ch06.jpa2annot.WordCollection"/>
         <mapping class="learn.beghibernate.ch06.jpa2annot.VeryLongString"/>
         <mapping class="learn.beghibernate.ch06.jpa2annot.ComputerBook"/>
+        <mapping class="learn.beghibernate.ch06.ordering.Employer"/>
+        <mapping class="learn.beghibernate.ch06.ordering.Employee"/>
     </session-factory>
 </hibernate-configuration>
