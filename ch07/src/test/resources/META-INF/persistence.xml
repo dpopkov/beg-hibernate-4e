@@ -4,6 +4,7 @@
              version="2.0">
     <persistence-unit name="chapter07">
         <class>learn.beghibernate.lifecycle.LifecycleThing</class>
+        <class>learn.beghibernate.lifecycle.UserAccount</class>
         <properties>
             <!-- PostgreSQL Properties -->
 
