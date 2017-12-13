@@ -25,6 +25,7 @@
         <h2.version>1.4.196</h2.version>
         <postgresql.version>9.4.1212.jre7</postgresql.version>
         <hibernate-core.version>5.2.12.Final</hibernate-core.version>
+        <hibernate-validator.version>5.2.5.Final</hibernate-validator.version>
         <lombok.version>1.16.18</lombok.version>
     </properties>
 
@@ -60,6 +61,29 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate-core.version}</version>
+        </dependency>
+
+        <!-- Hibernate validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <!-- these are only necessary if not in a Java EE environment -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-cdi</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>2.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.6</version>
         </dependency>
 
         <!-- External connection pool -->

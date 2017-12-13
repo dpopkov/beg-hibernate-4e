@@ -1,5 +1,6 @@
 # Beginning Hibernate
-Code for "Beginning Hibernate", 4th edition.
+Code for "Beginning Hibernate", 4th edition.  
+The code does not completely match the code in the book.
 
 | Chapter | Branch |
 |---|---|
@@ -9,3 +10,4 @@ Code for "Beginning Hibernate", 4th edition.
 | 4. The Persistence Life Cycle | ch04-life-cycle |
 | 5. An Overview of Mapping | - |
 | 6. Mapping with Annotations | ch06-mapping-annot |
+| 7. JPA Integration and Lifecycle Events | ch07-jpa, ch07-validation |
