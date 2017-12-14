@@ -27,6 +27,7 @@
         <!--  Drop and re-create the database schema on startup  -->
         <property name="hbm2ddl.auto">create-drop</property>
         <mapping class="learn.beghibernate.validated.ValidatedSimplePerson"/>
+        <mapping class="learn.beghibernate.validated.Coordinate"/>
 
     </session-factory>
 </hibernate-configuration>
