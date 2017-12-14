@@ -1,5 +1,6 @@
 package learn.beghibernate.validated;
 
+import learn.beghibernate.util.PersistHelper;
 import learn.beghibernate.util.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,7 +17,7 @@ public class ValidatedSimplePersonTest {
                 .age(15)
                 .fname("Johnny")
                 .lname("McYoungster").build();
-        persist(person);
+        PersistHelper.persist(person);
     }
 
     @Test(expected = ConstraintViolationException.class)
@@ -25,7 +26,7 @@ public class ValidatedSimplePersonTest {
                 .age(12)
                 .fname("Johnny")
                 .lname("McYoungster").build();
-        persist(person);
+        PersistHelper.persist(person);
         fail("Should have failed validation");
     }
 
@@ -35,7 +36,7 @@ public class ValidatedSimplePersonTest {
                 .age(14)
                 .fname("J")
                 .lname("McYoungster").build();
-        persist(person);
+        PersistHelper.persist(person);
         fail("Should have failed validation");
     }
 
@@ -45,7 +46,7 @@ public class ValidatedSimplePersonTest {
                 .age(14)
                 .fname("Johnny")
                 .lname("M").build();
-        persist(person);
+        PersistHelper.persist(person);
         fail("Should have failed validation");
     }
 
@@ -54,7 +55,7 @@ public class ValidatedSimplePersonTest {
         ValidatedSimplePerson person = ValidatedSimplePerson.builder()
                 .age(14)
                 .lname("McYoungster").build();
-        persist(person);
+        PersistHelper.persist(person);
         fail("Should have failed validation");
     }
 
