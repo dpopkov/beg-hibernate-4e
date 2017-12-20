@@ -11,3 +11,4 @@ The code does not completely match the code in the book.
 | 5. An Overview of Mapping | - |
 | 6. Mapping with Annotations | ch06-mapping-annot |
 | 7. JPA Integration and Lifecycle Events | ch07-jpa, ch07-validation |
+| 8. Using the session | ch08-session |
