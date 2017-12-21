@@ -7,7 +7,7 @@
         <!-- H2 connection settings -->
 
         <property name="connection.driver_class">org.h2.Driver</property>
-        <property name="connection.url">jdbc:h2:./db06</property>
+        <property name="connection.url">jdbc:h2:./db08</property>
         <property name="connection.username">sa</property>
         <property name="connection.password"></property>
         <property name="dialect">org.hibernate.dialect.H2Dialect</property>
@@ -26,6 +26,14 @@
         <property name="c3p0.timeout">10</property>
         <!--  Drop and re-create the database schema on startup  -->
         <property name="hbm2ddl.auto">create-drop</property>
+
+        <!-- 2nd level cache -->
+        <property name="cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+        <property name="hibernate.cache.region.factory_class">
+            org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+        </property>
         <mapping class="learn.beghibernate.ch08.deadlocks.Publisher"/>
+        <mapping class="learn.beghibernate.ch08.caching.Supplier"/>
     </session-factory>
 </hibernate-configuration>
